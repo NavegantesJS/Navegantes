@@ -1,7 +1,7 @@
 {
-  "name": "react-base",
+  "name": "navegantes",
   "version": "1.0.0",
-  "description": "React Base",
+  "description": "Proyecto base de plataofrma de gestión de tiquetes aereos.",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
@@ -13,7 +13,7 @@
     "react",
     "webpack"
   ],
-  "author": "Oscar Barajas <oscar@dragons.mx>",
+  "author": "Juan Rojas <kmirojo@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.6.2",
