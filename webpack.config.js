@@ -29,13 +29,17 @@ module.exports = {
         ],
       },
       {
-        test: /\.css|.styl$/,
+        test: /\.(s*)css$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
+            options: {
+              minimize: true,
+              sourceMap: true,
+            },
           },
           'css-loader',
-          'stylus-loader',
+          'sass-loader',
         ],
       },
     ],
@@ -46,7 +50,7 @@ module.exports = {
       filename: './index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'assets/[name].css',
+      filename: 'assets/style.css',
     }),
   ],
 };
