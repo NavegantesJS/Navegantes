@@ -1,3 +1,18 @@
+@import '../utils/Vars';
+@import '../utils/Fonts';
+
 .wrapper-header {
-	
+	.logo {
+		display: flex;
+		align-items: center;
+		img {
+			width: 70px;
+		}
+		span {
+			font-family: $font-logo;
+			color: $white;
+			font-size: 34px;
+			padding-left: 15px;
+		}
+	}
 }
