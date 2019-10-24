@@ -2,11 +2,12 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const App = () => (
+const MainLayout = ({ children }) => (
   <div className="App">
     <Header />
+    {children}
     <Footer />
   </div>
 );
 
-export default App;
+export default MainLayout;
