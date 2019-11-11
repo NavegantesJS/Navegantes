@@ -2,17 +2,58 @@
 @import '../utils/Fonts';
 
 .wrapper-header {
-	.logo {
-		display: flex;
-		align-items: center;
-		img {
-			width: 70px;
-		}
-		span {
-			font-family: $font-logo;
-			color: $white;
-			font-size: 34px;
-			padding-left: 15px;
-		}
-	}
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+  }
+  .menu {
+    span {
+      width: 30px;
+      height: 3px;
+      background: $white;
+      display: block;
+      position: relative;
+      &:before {
+        content: '';
+        width: 25px;
+        height: 3px;
+        background: $white;
+        display: block;
+        position: absolute;
+        top: -10px;
+        left: 0;
+      }
+      &:after {
+        content: '';
+        width: 20px;
+        height: 3px;
+        background: $white;
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 0;
+      }
+    }
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    img {
+      width: 70px;
+    }
+    span {
+      font-family: $font-logo;
+      color: $white;
+      font-size: 34px;
+      padding-left: 15px;
+    }
+  }
+  .user {
+    img {
+      width: 40px;
+    }
+  }
 }

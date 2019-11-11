@@ -1,13 +1,20 @@
 import React from 'react';
 import '../styles/components/Header.scss';
-import logo from '../static/images/logo.svg';
+import logoIcon from '../static/images/logo.svg';
+import userIcon from '../static/images/user.svg';
 
 const Header = () => (
   <header className="wrapper-header">
     <div className="container">
+      <div className="menu">
+        <span />
+      </div>
       <div className="logo">
-        <img src={logo} alt="Logo Navegantes" />
+        <img src={logoIcon} alt="Logo Navegantes" />
         <span>Navegantes</span>
+      </div>
+      <div className="user">
+        <img src={userIcon} alt="Menu de usuario" />
       </div>
     </div>
   </header>
