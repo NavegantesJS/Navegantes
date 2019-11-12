@@ -1,0 +1,114 @@
+{
+  "airports": [
+    {
+      "city": "Buenos Aires",
+      "country": "Argentina",
+      "code": "EZE"
+    },
+    {
+      "city": "La Paz",
+      "country": "Bolivia",
+      "code": "LPB"
+    },
+    {
+      "city": "Río de Janeiro",
+      "country": "Brasil",
+      "code": "GIG"
+    },
+    {
+      "city": "São Paulo",
+      "country": "Brasil",
+      "code": "GRU"
+    },
+    {
+      "city": "Santiago de Chile",
+      "country": "Chile",
+      "code": "SCL"
+    },
+    {
+      "city": "Bogotá",
+      "country": "Colombia",
+      "code": "BOG"
+    },
+    {
+      "city": "Medellín",
+      "country": "Colombia",
+      "code": "MDE"
+    },
+    {
+      "city": "Quito",
+      "country": "Ecuador,",
+      "code": "UIO"
+    },
+    {
+      "city": "Asunción",
+      "country": "Paraguay",
+      "code": "ASU"
+    },
+    {
+      "city": "Lima",
+      "country": "Peru",
+      "code": "LIM"
+    },
+    {
+      "city": "Montevideo",
+      "country": "Uruguay",
+      "code": "MVD"
+    },
+    {
+      "city": "Toronto",
+      "country": "Canada",
+      "code": "YYZ"
+    },
+    {
+      "city": "Los Angeles",
+      "country": "Estados Unidos",
+      "code": "LAX"
+    },
+    {
+      "city": "Miami",
+      "country": "Estados Unidos",
+      "code": "MIA"
+    },
+    {
+      "city": "Ciudad de México",
+      "country": "México",
+      "code": "MEX"
+    },
+    {
+      "city": "Madrid",
+      "country": "España",
+      "code": "MAD"
+    },
+    {
+      "city": "Berlín",
+      "country": "Alemania",
+      "code": "TXL"
+    },
+    {
+      "city": "Roma",
+      "country": "Italia",
+      "code": "FCO"
+    },
+    {
+      "city": "París",
+      "country": "Francia",
+      "code": "CDG"
+    },
+    {
+      "city": "Sídney",
+      "country": "Australia",
+      "code": "SYD"
+    },
+    {
+      "city": "Seoul",
+      "country": "Corea del sur",
+      "code": "ICN"
+    },
+    {
+      "city": "Tokio",
+      "country": "Japón",
+      "code": "HND"
+    }
+  ]
+}
