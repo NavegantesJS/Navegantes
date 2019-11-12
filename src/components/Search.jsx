@@ -1,118 +1,120 @@
 import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
+import DatePicker from "react-datepicker";
 import '../styles/components/Search.scss';
+import "react-datepicker/dist/react-datepicker.css";
 
 const airports = [
   {
     city: 'Buenos Aires',
     country: 'Argentina',
-    code: 'EZE'
+    code: 'EZE',
   },
   {
     city: 'La Paz',
     country: 'Bolivia',
-    code: 'LPB'
+    code: 'LPB',
   },
   {
     city: 'Río de Janeiro',
     country: 'Brasil',
-    code: 'GIG'
+    code: 'GIG',
   },
   {
     city: 'São Paulo',
     country: 'Brasil',
-    code: 'GRU'
+    code: 'GRU',
   },
   {
     city: 'Santiago de Chile',
     country: 'Chile',
-    code: 'SCL'
+    code: 'SCL',
   },
   {
     city: 'Bogotá',
     country: 'Colombia',
-    code: 'BOG'
+    code: 'BOG',
   },
   {
     city: 'Medellín',
     country: 'Colombia',
-    code: 'MDE'
+    code: 'MDE',
   },
   {
     city: 'Quito',
     country: 'Ecuador,',
-    code: 'UIO'
+    code: 'UIO',
   },
   {
     city: 'Asunción',
     country: 'Paraguay',
-    code: 'ASU'
+    code: 'ASU',
   },
   {
     city: 'Lima',
     country: 'Peru',
-    code: 'LIM'
+    code: 'LIM',
   },
   {
     city: 'Montevideo',
     country: 'Uruguay',
-    code: 'MVD'
+    code: 'MVD',
   },
   {
     city: 'Toronto',
     country: 'Canada',
-    code: 'YYZ'
+    code: 'YYZ',
   },
   {
     city: 'Los Angeles',
     country: 'Estados Unidos',
-    code: 'LAX'
+    code: 'LAX',
   },
   {
     city: 'Miami',
     country: 'Estados Unidos',
-    code: 'MIA'
+    code: 'MIA',
   },
   {
     city: 'Ciudad de México',
     country: 'México',
-    code: 'MEX'
+    code: 'MEX',
   },
   {
     city: 'Madrid',
     country: 'España',
-    code: 'MAD'
+    code: 'MAD',
   },
   {
     city: 'Berlín',
     country: 'Alemania',
-    code: 'TXL'
+    code: 'TXL',
   },
   {
     city: 'Roma',
     country: 'Italia',
-    code: 'FCO'
+    code: 'FCO',
   },
   {
     city: 'París',
     country: 'Francia',
-    code: 'CDG'
+    code: 'CDG',
   },
   {
     city: 'Sídney',
     country: 'Australia',
-    code: 'SYD'
+    code: 'SYD',
   },
   {
     city: 'Seoul',
     country: 'Corea del sur',
-    code: 'ICN'
+    code: 'ICN',
   },
   {
     city: 'Tokio',
     country: 'Japón',
-    code: 'HND'
-  }
+    code: 'HND',
+  },
 ];
 
 const escapeRegexCharacters = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -121,12 +123,14 @@ const getSuggestions = value => {
   if (escapedValue === '') {
     return [];
   }
-  const regex = new RegExp('^' + escapedValue, 'i');
+  const regex = new RegExp(`^${escapedValue}`, 'i');
   return airports.filter(airport => regex.test(airport.city));
-}
+};
 const getSuggestionValue = suggestion => suggestion.city;
 const renderSuggestion = suggestion => (
-  <span>{suggestion.city}, {suggestion.country} ({suggestion.code})</span>
+  <span>
+    {suggestion.city},{suggestion.country} ({suggestion.code})
+  </span>
 );
 
 class Search extends Component {
@@ -136,19 +140,21 @@ class Search extends Component {
       valueOrigin: '',
       suggestionsOrigin: [],
       valueDestiny: '',
-      suggestionsDestiny: []
+      suggestionsDestiny: [],
+      startDate: new Date(),
+      endDate: new Date()
     };
   }
 
   onChangeOrigin = (event, { newValue }) => {
     this.setState({
-      valueOrigin: newValue
+      valueOrigin: newValue,
     });
   };
 
   onChangeDestiny = (event, { newValue }) => {
     this.setState({
-      valueDestiny: newValue
+      valueDestiny: newValue,
     });
   };
 
@@ -156,43 +162,60 @@ class Search extends Component {
   // You already implemented this logic above, so just use it.
   onSuggestionsFetchRequestedOrigin = ({ value }) => {
     this.setState({
-      suggestionsOrigin: getSuggestions(value)
+      suggestionsOrigin: getSuggestions(value),
     });
   };
 
   onSuggestionsFetchRequestedDestiny = ({ value }) => {
     this.setState({
-      suggestionsDestiny: getSuggestions(value)
+      suggestionsDestiny: getSuggestions(value),
     });
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
   onSuggestionsClearRequestedOrigin = () => {
     this.setState({
-      suggestionsOrigin: []
+      suggestionsOrigin: [],
     });
   };
 
   onSuggestionsClearRequestedDestiny = () => {
     this.setState({
-      suggestionsDestiny: []
+      suggestionsDestiny: [],
     });
   };
 
+  //DatePicker
+  handleChangeStart = date => {
+    this.setState({
+      startDate: date
+    });
+  }
+  handleChangeEnd = date => {
+    this.setState({
+      endDate: date
+    });
+  }
+
   render() {
-    const { valueOrigin, suggestionsOrigin, valueDestiny, suggestionsDestiny } = this.state;
+    const {
+      valueOrigin,
+      suggestionsOrigin,
+      valueDestiny,
+      suggestionsDestiny,
+    } = this.state;
 
     // Autosuggest will pass through all these props to the input.
     const inputPropsOrigin = {
       placeholder: 'Ciudad de origen',
       value: valueOrigin,
-      onChange: this.onChangeOrigin
+      onChange: this.onChangeOrigin,
     };
 
     const inputPropsDestiny = {
       placeholder: 'Ciudad de destino',
       value: valueDestiny,
-      onChange: this.onChangeDestiny
+      onChange: this.onChangeDestiny,
     };
 
     return (
@@ -210,16 +233,34 @@ class Search extends Component {
         <div className="group-field">
           <Autosuggest
             suggestions={suggestionsDestiny}
-            onSuggestionsFetchRequested={this.onSuggestionsFetchRequestedDestiny}
-            onSuggestionsClearRequested={this.onSuggestionsClearRequestedDestiny}
+            onSuggestionsFetchRequested={
+              this.onSuggestionsFetchRequestedDestiny
+            }
+            onSuggestionsClearRequested={
+              this.onSuggestionsClearRequestedDestiny
+            }
             getSuggestionValue={getSuggestionValue}
             renderSuggestion={renderSuggestion}
             inputProps={inputPropsDestiny}
           />
         </div>
+        <div className="group-field">
+          <DatePicker
+            selected={this.state.startDate}
+            onChange={this.handleChangeStart}
+            placeholderText="Fecha de ida"
+          />
+        </div>
+        <div className="group-field">
+          <DatePicker
+            selected={this.state.endDate}
+            onChange={this.handleChangeEnd}
+            placeholderText="Fecha de vuelta"
+          />
+        </div>
       </div>
     );
   }
-};
+}
 
 export default Search;
