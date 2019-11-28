@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker';
+import { Link } from 'react-router-dom';
 import '../styles/components/Search.scss';
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker.css';
 
 const airports = [
   {
@@ -129,7 +130,13 @@ const getSuggestions = value => {
 const getSuggestionValue = suggestion => suggestion.city;
 const renderSuggestion = suggestion => (
   <span>
-    {suggestion.city},{suggestion.country} ({suggestion.code})
+    {suggestion.city}
+,
+    {suggestion.country}
+    {' '}
+(
+    {suggestion.code}
+)
   </span>
 );
 
@@ -142,7 +149,7 @@ class Search extends Component {
       valueDestiny: '',
       suggestionsDestiny: [],
       startDate: new Date(),
-      endDate: new Date()
+      endDate: new Date(),
     };
   }
 
@@ -185,17 +192,18 @@ class Search extends Component {
     });
   };
 
-  //DatePicker
+  // DatePicker
   handleChangeStart = date => {
     this.setState({
-      startDate: date
+      startDate: date,
     });
-  }
+  };
+
   handleChangeEnd = date => {
     this.setState({
-      endDate: date
+      endDate: date,
     });
-  }
+  };
 
   render() {
     const {
@@ -220,43 +228,58 @@ class Search extends Component {
 
     return (
       <div className="container-search">
-        <div className="group-field">
-          <Autosuggest
-            suggestions={suggestionsOrigin}
-            onSuggestionsFetchRequested={this.onSuggestionsFetchRequestedOrigin}
-            onSuggestionsClearRequested={this.onSuggestionsClearRequestedOrigin}
-            getSuggestionValue={getSuggestionValue}
-            renderSuggestion={renderSuggestion}
-            inputProps={inputPropsOrigin}
-          />
+        <div className="group-fields">
+          <div className="group-field">
+            <label>Viajas desde...</label>
+            <Autosuggest
+              suggestions={suggestionsOrigin}
+              onSuggestionsFetchRequested={
+                this.onSuggestionsFetchRequestedOrigin
+              }
+              onSuggestionsClearRequested={
+                this.onSuggestionsClearRequestedOrigin
+              }
+              getSuggestionValue={getSuggestionValue}
+              renderSuggestion={renderSuggestion}
+              inputProps={inputPropsOrigin}
+            />
+          </div>
+          <div className="group-field">
+            <label>Viajas a...</label>
+            <Autosuggest
+              suggestions={suggestionsDestiny}
+              onSuggestionsFetchRequested={
+                this.onSuggestionsFetchRequestedDestiny
+              }
+              onSuggestionsClearRequested={
+                this.onSuggestionsClearRequestedDestiny
+              }
+              getSuggestionValue={getSuggestionValue}
+              renderSuggestion={renderSuggestion}
+              inputProps={inputPropsDestiny}
+            />
+          </div>
+          <div className="group-field">
+            <label>Cuando vas...</label>
+            <DatePicker
+              selected={this.state.startDate}
+              onChange={this.handleChangeStart}
+              placeholderText="Fecha de ida"
+            />
+          </div>
+          <div className="group-field">
+            <label>Cuando regresas...</label>
+            <DatePicker
+              selected={this.state.endDate}
+              onChange={this.handleChangeEnd}
+              placeholderText="Fecha de vuelta"
+            />
+          </div>
         </div>
-        <div className="group-field">
-          <Autosuggest
-            suggestions={suggestionsDestiny}
-            onSuggestionsFetchRequested={
-              this.onSuggestionsFetchRequestedDestiny
-            }
-            onSuggestionsClearRequested={
-              this.onSuggestionsClearRequestedDestiny
-            }
-            getSuggestionValue={getSuggestionValue}
-            renderSuggestion={renderSuggestion}
-            inputProps={inputPropsDestiny}
-          />
-        </div>
-        <div className="group-field">
-          <DatePicker
-            selected={this.state.startDate}
-            onChange={this.handleChangeStart}
-            placeholderText="Fecha de ida"
-          />
-        </div>
-        <div className="group-field">
-          <DatePicker
-            selected={this.state.endDate}
-            onChange={this.handleChangeEnd}
-            placeholderText="Fecha de vuelta"
-          />
+        <div className="group-button">
+          <Link to="/resultado" className="button">
+            Buscar
+          </Link>
         </div>
       </div>
     );

@@ -15,3 +15,27 @@ body {
 	width: 1200px;
 	margin: 0 auto;
 }
+
+.main-section {
+  background-size: cover;
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: -webkit-linear-gradient(to top, rgba(#41C1E4,0.8), rgba(#886DD4,0.8));
+    background: linear-gradient(to top, rgba(#41C1E4,0.8), rgba(#886DD4,0.8));
+  }
+}
+
+.wrapper-content {
+  color: $white;
+  height: calc(100vh - 148px);
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}

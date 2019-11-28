@@ -1,20 +1,20 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Search from '../components/Search';
-import '../styles/components/Home.scss';
+import FlightList from '../components/FlightList';
+import '../styles/components/Results.scss';
 import bgHome from '../static/images/bg_home.jpg';
 
-const Home = () => (
+const Results = () => (
   <div className="main-section" style={{ backgroundImage: `url(${bgHome})` }}>
     <Header />
     <section className="wrapper-content">
       <div className="container">
-        <Search />
+        <FlightList />
       </div>
     </section>
     <Footer />
   </div>
 );
 
-export default Home;
+export default Results;

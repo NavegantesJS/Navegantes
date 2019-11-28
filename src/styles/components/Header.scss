@@ -12,6 +12,7 @@
     padding: 10px 0;
   }
   .menu {
+    cursor: pointer;
     span {
       width: 30px;
       height: 3px;
@@ -41,8 +42,11 @@
     }
   }
   .logo {
-    display: flex;
-    align-items: center;
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
     img {
       width: 70px;
     }
@@ -54,6 +58,7 @@
     }
   }
   .user {
+    cursor: pointer;
     img {
       width: 40px;
     }
